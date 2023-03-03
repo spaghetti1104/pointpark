@@ -1,0 +1,124 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CMPS 162: Module 7 Programming Project</title>
+<style>* { font-family: monospace; }</style>
+<script>
+
+//-----------------//
+// Browser Version //
+//-----------------//
+console.log("Browser Version");
+
+// 1. Complete the implementation and show the current verstion of your browser
+
+// 2. Paste the output that you receive from the first question
+//5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.3 Safari/605.1.15
+//-----------------//
+// Windows //
+//-----------------//
+console.log("Windows");
+
+// 1. Create a way to open a window with the height & width of 500 each
+//window.open();
+// 2. Create a way to close a window
+//window.close();
+// 3. Create a button to open a new window with preferences of a toolbar, location is true, no directories, no status
+//.   menubar, scrollbars, not resizable, height/width is 400
+function pop(){
+  window.open("https://www.pointpark.edu","","width=400,height=400,toolbar=yes,location=yes,directories=no,status=no,menubar=yes,scrollbar=yes,resiable=no");
+}
+//-----------------//
+// History URLS //
+//-----------------//
+console.log("History");
+  
+// 1. Create a function that provides a way to obtain the history of pages visited previously
+  function hstry(){
+    document.getElementById("history").innerHTML=history.length;
+  }
+
+// 2. Run in Live Server and copy the URL, and then visit www.yahoo.com, www.jeffreyjseaman.com, www.pkwinery.com, www.libertypolespirits.com, www.espn.com
+// Provide how many URLs you have in your history
+  7
+
+  //-----------------//
+// Cookies //
+//-----------------//
+console.log("Cookies");
+  
+// 1. Create a way to identify if cookies are enabled
+function areCookiesEnabled() {
+  var cookieEnabled = navigator.cookieEnabled;
+  if (!cookieEnabled) {
+    document.cookie = "testcookie";
+    cookieEnabled = document.cookie.indexOf("testcookie") !== -1;
+    document.cookie = "testcookie=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  }
+  
+  return cookieEnabled;
+}
+
+if (areCookiesEnabled()) {
+  alert("Cookie is enable");
+} else {
+  alert("Cookie is not enable");
+}
+
+// 2. Create a way to set the cookie
+function Setcookie(cname,cvalue,exdays){
+                const d = new Date();
+                d.setDate(d.getDate() + exdays);
+                var expires = "expires=" + d.toUTCString();
+                document.cookie= cname + "=" + cvalue + ";" + expires + ";path/";
+            }
+
+  
+// 3. Create a way to obtain the cookie and display it on the screen
+            //Get the cookie
+            function getCookie(cname) {
+                var name = cname + "=";
+                var decodedCookie = decodeURIComponent(document.cookie);
+                var ca = decodedCookie.split(';');
+                for (var i = 0;i < ca.length; i++){
+                    var c = ca[i];
+                    while(c.charAt(0)== ' '){
+                        c = c.substring(1);
+                    }
+                    if (c.indexOf(name) == 0) {
+                        return c.substring(name.length, c.length);
+                    }
+                }
+                return "";
+            }
+
+            // Check the cookie
+            function checkCookie() {
+                var user = getCookie("username");
+                if (user != ""){
+                    alert("Welcome again " + user);
+                } else {
+                    user = prompt("Please input your name:","");
+                    if (user != "" && user != null){
+                        Setcookie("username", user, 30);
+                    }
+                }
+            }
+
+
+</script>
+</head>
+<body>
+  See console!<br>
+  <p id="getversion">
+    <script>
+      document.getElementById("getversion").innerHTML=navigator.appVersion;
+    </script>
+  </p>
+  <p id="history"></p>
+  <button onClick="hstry();">Show history</button>
+<input type="button" value="open Window" onClick="pop();">
+</body>
+</html>
