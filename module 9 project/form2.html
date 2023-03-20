@@ -1,0 +1,37 @@
+<html>
+    <title>Form 2 </title>
+    <head>
+        <script src="./js/form2.js"></script>
+    </head>
+    <body>
+        <form name="form2" onsubmit="return val()">
+            First name: <input type="text" name="fname" id="fname" required>
+            <br>
+            Last name: <input type="text" name="lname" id="lname" required>
+            <br>
+            Address 1: <input type="text" name="addr1" id="add">
+            <br>
+            Address 2: <input type="text" name="addr2" id="secAdd">
+            <br>
+            City: <input type="text" name="city" id="city" required>
+            <br>
+            State: <input type="text" name="state" id="state" required maxlength="2">
+            <br>
+            Zip Code: <input type="number" name="zip"  id="zip" required min="0" max="99999">
+            <br>
+            Question 1: What is your favorite coffee place in Pittsburgh?
+            <br>
+            <input type="text" name="q1" id="q1" >
+            <br>
+            Question 2: What is your favortite lunch spot in Pittsburgh?
+            <br>
+            <input type="text" name="q2" id="q2">
+            <br>
+            Question 3: What is your favortite city to visit outside of Pittsburgh?
+            <br>
+            <input type="text" name="q3" id="q3">
+            <br>
+            <input type="submit" value="submit">
+        </form>
+    </body>
+</html>
